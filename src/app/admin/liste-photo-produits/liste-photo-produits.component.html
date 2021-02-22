@@ -1,0 +1,51 @@
+<section class="content-header">
+  <h1>
+    Page d'affichage des photos des produits
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li class="active">Liste des photos</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-success">
+        <div class="box-header">
+          <h3 class="box-title">Liste des photos</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>Numero</th>
+              <th>Nom de la photo</th>
+              <th>Type</th>
+              <th>Produit</th>
+              <th *ngIf="authService.isAdmin()">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let photo of photos">
+              <td>{{photo.id_photo}}</td>
+              <td>{{photo.nom_photo}}</td>
+              <td>{{photo.type}}</td>
+              <td>{{photo.produits.designation}}</td>
+              <td *ngIf="authService.isAdmin()">
+                <a class="clickable" (click)="edit(photo.id_photo)"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a class="clickable" (click)="delete(photo)"><span class="glyphicon glyphicon-trash"></span></a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-footer" *ngIf="authService.isAdmin()">
+          <button class="btn btn-success center-block" (click)="add()">Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

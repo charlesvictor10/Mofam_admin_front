@@ -1,0 +1,41 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Page d'ajout d'une catégorie
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li class="active">Liste des catégories</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="box box-success">
+    <div class="box-header with-border">
+      <h3 class="box-title">Enregistrement d'une catégorie</h3>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+      </div>
+    </div>
+
+    <!-- /.box-header -->
+    <div class="box-body">
+      <form #f="ngForm" (ngSubmit)="f.form.valid && onSaveCategorie(f.value)">
+        <div *ngIf="f.submitted && errorMessage" class="has-error">{{errorMessage}}</div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Libellé <span class="has-error">*</span></label>
+              <input type="text" class="form-control" name="libelle" [(ngModel)]="categorie.libelle" #libelle="ngModel" placeholder="Entrer le libellé" [ngClass]="{'is-invalid': f.submitted && libelle.invalid}" required>
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button type="submit" class="btn btn-success">Enregistrer</button>
+          <button type="reset" class="btn btn-danger pull-right">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

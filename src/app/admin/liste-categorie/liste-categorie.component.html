@@ -1,0 +1,47 @@
+<section class="content-header">
+  <h1>
+    Page d'affichage des catégories
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li class="active">Liste des catégories</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-success">
+        <div class="box-header">
+          <h3 class="box-title">Liste des catégories</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>Numéro</th>
+              <th>Libellé</th>
+              <th *ngIf="authService.isAdmin()">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let categorie of categories">
+              <td>{{categorie.id_cat}}</td>
+              <td>{{categorie.libelle}}</td>
+              <td *ngIf="authService.isAdmin()">
+                <a class="clickable" (click)="edit(categorie.id_cat)"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a class="clickable" (click)="delete(categorie)"><span class="glyphicon glyphicon-trash"></span></a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-footer" *ngIf="authService.isAdmin()">
+          <button class="btn btn-success center-block" (click)="add()">Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

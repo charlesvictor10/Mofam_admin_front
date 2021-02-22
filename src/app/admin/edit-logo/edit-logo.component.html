@@ -1,0 +1,51 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Page de modification d'un logo
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li class="active">Liste des photos</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="box box-success">
+    <div class="box-header with-border">
+      <h3 class="box-title">Modification d'un logo</h3>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+      </div>
+    </div>
+
+    <!-- /.box-header -->
+    <div class="box-body">
+      <form #f="ngForm" (ngSubmit)="uploadLogo()">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Nom de la photo</label>
+              <input type="text" class="form-control" name="nom_logo" [(ngModel)]="logo.nom_logo" disabled>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputFile">Photo</label>
+              <input type="file" id="exampleInputFile" name="image" ngModel (change)="onSelectedFile($event)">
+            </div>
+            <div class="form-group">
+              <label>Produit</label>
+              <input type="text" class="form-control" name="parteners" [(ngModel)]="logo.partener.nom" disabled>
+            </div>
+            <div class="form-group">
+              <input type="hidden" class="form-control" name="id_logo" [(ngModel)]="logo.id_logo">
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button type="submit" class="btn btn-success">Enregistrer</button>
+          <button type="reset" class="btn btn-danger pull-right">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

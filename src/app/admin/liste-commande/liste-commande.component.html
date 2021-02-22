@@ -1,0 +1,50 @@
+<section class="content-header">
+  <h1>
+    Page d'affichage des commandes
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li class="active">Liste des commandes</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-success">
+        <div class="box-header">
+          <h3 class="box-title">Liste des commandes</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>Code</th>
+              <th>Date commande</th>
+              <th>Etat commande</th>
+              <th>Montant total</th>
+              <th>Client</th>
+              <th *ngIf="authService.isAuthenticated()">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let commande of commandes">
+                <td>{{commande.code}}</td>
+                <td>{{commande.date_commande|date:'dd/MM/yyyy'}}</td>
+                <td>{{commande.etat}}</td>
+                <td>{{commande.montant}} FCFA</td>
+                <td>{{commande.acheteur.prenom}} {{commande.acheteur.nom}}</td>
+                <td>
+                  <a class="clickable" (click)="edit(commande.code)" *ngIf="authService.isPrestataire()"><span class="glyphicon glyphicon-pencil"></span></a>
+                  <a class="clickable" (click)="delete(commande)" *ngIf="authService.isAdmin()"><span class="glyphicon glyphicon-trash"></span></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

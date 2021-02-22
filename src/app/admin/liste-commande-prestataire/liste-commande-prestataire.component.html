@@ -1,0 +1,54 @@
+<section class="content-header">
+  <h1>
+    Page d'affichage des commandes effectuées par les prestataires
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li>Gestion des commandes</li>
+    <li class="active">Liste des commandes prestataire</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-success">
+        <div class="box-header">
+          <h3 class="box-title">Liste des commandes prestataire</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>Code</th>
+              <th>Date commande</th>
+              <th>Etat commande</th>
+              <th>Produits</th>
+              <th>Quantite</th>
+              <th>Client</th>
+              <th>Prestataire</th>
+              <th *ngIf="authService.isAdmin()">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let commandesPrestataire of commandesPrestataires">
+              <td>{{commandesPrestataire.code}}</td>
+              <td>{{commandesPrestataire.date_commande|date:'dd/MM/yyyy'}}</td>
+              <td>{{commandesPrestataire.etat}}</td>
+              <td>{{commandesPrestataire.produit.designation}}</td>
+              <td>{{commandesPrestataire.quantite}}</td>
+              <td>{{commandesPrestataire.acheteur.prenom}} {{commandesPrestataire.acheteur.nom}}</td>
+              <td>{{commandesPrestataire.utilisateur.prenom}} {{commandesPrestataire.utilisateur.nom}}</td>
+              <td>
+                <a class="clickable" (click)="delete(commandesPrestataire)" *ngIf="authService.isAdmin()"><span class="glyphicon glyphicon-trash"></span></a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

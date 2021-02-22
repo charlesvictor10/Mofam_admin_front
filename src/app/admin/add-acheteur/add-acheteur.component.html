@@ -1,0 +1,83 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Page d'ajout d'un acheteur
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li class="active">Liste des acheteurs</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <!-- SELECT2 EXAMPLE -->
+  <div class="box box-success">
+    <div class="box-header with-border">
+      <h3 class="box-title">Enregistrement d'un acheteur</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <form #f="ngForm" (ngSubmit)="f.form.valid && onSaveAcheteur(f.value)">
+        <div *ngIf="f.submitted && errorMessage" class="has-error">{{errorMessage}}</div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="box box-success">
+              <div class="box-body">
+                <div class="form-group">
+                  <label>Prenom <span class="has-error">*</span></label>
+                  <input class="form-control" type="text" name="prenom" [(ngModel)]="acheteur.prenom" #prenom="ngModel" placeholder="Prénom du client" [ngClass]="{'is-invalid': f.submitted && prenom.invalid}" required>
+                </div>
+                <div class="form-group">
+                  <label>Nom <span class="has-error">*</span></label>
+                  <input class="form-control" type="text" name="nom" [(ngModel)]="acheteur.nom" #nom="ngModel" placeholder="Nom du client" [ngClass]="{'is-invalid': f.submitted && nom.invalid}" required>
+                </div>
+                <div class="form-group">
+                  <label>Email <span class="has-error">*</span></label>
+                  <input class="form-control" type="text" name="email" [(ngModel)]="acheteur.email" #email="ngModel" placeholder="Email du client" [ngClass]="{'is-invalid': f.submitted && email.invalid}" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box box-success">
+              <div class="box-body">
+                <div class="form-group">
+                  <label>Mot de passe <span class="has-error">*</span></label>
+                  <input class="form-control" type="password" name="password" [(ngModel)]="acheteur.password" #password="ngModel" placeholder="Mot de passe du client" [ngClass]="{'is-invalid': f.submitted && password.invalid}" required>
+                </div>
+                <div class="form-group">
+                  <label>Téléphone <span class="has-error">*</span></label>
+                  <input class="form-control" type="tel" name="tel" [(ngModel)]="acheteur.tel" #tel="ngModel" placeholder="Téléphone du client" [ngClass]="{'is-invalid': f.submitted && tel.invalid}" required>
+                </div>
+                <div class="form-group">
+                  <label>Ville <span class="has-error">*</span></label>
+                  <select *ngIf="villes" class="form-control select2" style="width: 100%;" name="ville" ngModel>
+                    <option value="" disabled>Selectionner une ville</option>
+                    <option *ngFor="let ville of villes; let i = index" [ngValue]="villes[i]">
+                      {{ville.libelle}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="box box-success">
+              <div class="box-body">
+                <div class="form-group">
+                  <label>Adresse <span class="has-error">*</span></label>
+                  <textarea class="form-control" rows="3" name="adresse" [(ngModel)]="acheteur.adresse" placeholder="Entrer l'adresse précis du client ..." [ngClass]="{'is-invalid': f.submitted && adresse.invalid}" required></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button type="submit" class="btn btn-success">Enregistrer</button>
+          <button type="reset" class="btn btn-danger pull-right">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

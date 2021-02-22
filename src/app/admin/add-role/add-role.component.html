@@ -1,0 +1,46 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Page d'ajout d'un rôle
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li><a href="#">Gestion des utilisateurs</a></li>
+    <li class="active">Liste des rôles</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="box box-success">
+    <div class="box-header with-border">
+      <h3 class="box-title">Enregistrement d'un rôle</h3>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+      </div>
+    </div>
+
+    <!-- /.box-header -->
+    <div class="box-body">
+      <form #f="ngForm" (ngSubmit)="f.form.valid && onSaveRole(f.value)">
+        <div *ngIf="f.submitted && errorMessage" class="has-error">{{errorMessage}}</div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Nom <span class="has-error">*</span></label>
+              <input type="text" class="form-control" name="nom" [(ngModel)]="role.nom" #nom="ngModel" placeholder="Entrer le nom du rôle" [ngClass]="{'is-invalid': f.submitted && nom.invalid}" required>
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <textarea class="form-control" rows="3" name="description" [(ngModel)]="role.description" placeholder="Entrer la drescription du rôle ..."></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button type="submit" class="btn btn-success">Enregistrer</button>
+          <button type="reset" class="btn btn-danger pull-right">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

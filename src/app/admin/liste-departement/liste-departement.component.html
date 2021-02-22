@@ -1,0 +1,50 @@
+<section class="content-header">
+  <h1>
+    Page d'affichage des départements
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li><a href="#">Gestion des localités</a></li>
+    <li class="active">Liste des départements</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-success">
+        <div class="box-header">
+          <h3 class="box-title">Liste des départements</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>Numéro</th>
+              <th>Nom du département</th>
+              <th>Région</th>
+              <th *ngIf="authService.isAdmin()">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let departement of departements">
+              <td>{{departement.id_departement}}</td>
+              <td>{{departement.nom}}</td>
+              <td>{{departement.region.nom}}</td>
+              <td *ngIf="authService.isAdmin()">
+                <a class="clickable" (click)="edit(departement.id_departement)"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a class="clickable" (click)="delete(departement)"><span class="glyphicon glyphicon-trash"></span></a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-footer" *ngIf="authService.isAdmin()">
+          <button class="btn btn-success center-block" (click)="add()">Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

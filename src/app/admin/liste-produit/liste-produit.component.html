@@ -1,0 +1,57 @@
+<section class="content-header">
+  <h1>
+    Page d'affichage des produits
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li class="active">Liste des produits</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-success">
+        <div class="box-header">
+          <h3 class="box-title">Liste des produits</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>Numéro</th>
+              <th>Désignation</th>
+              <th>Prix unitaire</th>
+              <th>Quantité</th>
+              <th>Propriétaire</th>
+              <th>Localisation</th>
+              <th>Date commande</th>
+              <th *ngIf="authService.isAdmin()">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let produit of produits">
+              <td>{{produit.id_produit}}</td>
+              <td>{{produit.designation}}</td>
+              <td>{{produit.prix}}</td>
+              <td>{{produit.quantite}}</td>
+              <td>{{produit.proprietaire}}</td>
+              <td>{{produit.ville.nom}}</td>
+              <td>{{produit.date_commande|date:'dd/MM/yyyy'}}</td>
+              <td *ngIf="authService.isAdmin()">
+                <a class="clickable" (click)="edit(produit.id_produit)"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a class="clickable" (click)="delete(produit)"><span class="glyphicon glyphicon-trash"></span></a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-footer" *ngIf="authService.isAdmin()">
+          <button class="btn btn-success center-block" (click)="add()">Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

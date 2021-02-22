@@ -1,0 +1,124 @@
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- search form -->
+    <form action="#" method="get" class="sidebar-form">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Search...">
+        <span class="input-group-btn">
+          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+          </button>
+        </span>
+      </div>
+    </form>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu" data-widget="tree">
+      <li class="header">MAIN NAVIGATION</li>
+      <li class="treeview">
+        <a routerLink="/admin/listeCategorie">
+          <i class="fa fa-fw fa-object-group"></i>
+          <span>Liste des catégories</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+      </li>
+      <li class="treeview">
+        <a routerLink="/admin/listeSousCategorie">
+          <i class="fa fa-fw fa-leaf"></i>
+          <span>Liste des sous catégories</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+      </li>
+      <li class="treeview">
+        <a routerLink="/admin/listeProduit">
+          <i class="fa fa-product-hunt"></i>
+          <span>Liste des produits</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-fw fa-shopping-cart"></i>
+          <span>Gestion des commandes</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="/admin/listeCommande"><i class="fa fa-fw fa-shopping-bag"></i> Liste commandes clients</a></li>
+          <li *ngIf="authService.isAdmin()"><a routerLink="/admin/listeCommandePrestataire"><i class="fa fa-fw fa-shopping-bag"></i> Liste commande prestataires</a></li>
+          <li *ngIf="authService.isPrestataire()"><a routerLink="/admin/listeCommandeParPrestataire"><i class="fa fa-fw fa-shopping-bag"></i> Liste commande passées</a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a routerLink="/admin/listeProduitCommande">
+          <i class="fa fa-lemon-o"></i>
+          <span>Gestion produit commande</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+      </li>
+      <li class="treeview" *ngIf="authService.isAdmin()">
+        <a href="#">
+          <i class="fa fa-fw fa-camera-retro"></i>
+          <span>Liste des photos</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="/admin/listePhotoProduits"><i class="fa fa-fw fa-camera"></i> Photos des produits</a></li>
+          <li><a routerLink="/admin/listePhotoParteners"><i class="fa fa-fw fa-camera"></i> Photos des partenaires</a></li>
+        </ul>
+      </li>
+      <li class="header">LABELS</li>
+      <li class="treeview" *ngIf="authService.isAdmin()">
+        <a href="#">
+          <i class="fa fa-flag"></i>
+          <span>Gestion des localités</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="/admin/listeRegion"><i class="fa fa-flag-checkered"></i> Liste des régions</a></li>
+          <li><a routerLink="/admin/listeDepartement"><i class="fa fa-flag-checkered"></i> Liste des départements</a></li>
+          <li><a routerLink="/admin/listeVille"><i class="fa fa-flag-checkered"></i> Liste des villes</a></li>
+        </ul>
+      </li>
+      <li class="treeview" *ngIf="authService.isAdmin()">
+        <a routerLink="/admin/listePartenaire">
+          <i class="fa fa-fw fa-pencil-square"></i>
+          <span>Liste des partenaires</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+      </li>
+      <li class="treeview" *ngIf="authService.isAdmin()">
+        <a href="#">
+          <i class="fa fa-fw fa-group"></i>
+          <span>Gestion des utilisateurs</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="/admin/listeAcheteur"><i class="fa fa-user-plus"></i> Liste des clients</a></li>
+          <li><a routerLink="/admin/listePrestataire"><i class="fa fa-user-plus"></i> Liste des prestataires</a></li>
+          <li><a routerLink="/admin/listeUtilisateur"><i class="fa fa-user-plus"></i> Liste des utilisateurs</a></li>
+          <li><a routerLink="/admin/listeRole"><i class="fa fa-key"></i> Liste des roles</a></li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+  <!-- /.sidebar -->
+</aside>

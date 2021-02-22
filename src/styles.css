@@ -1,0 +1,11 @@
+@import "~datatables.net-bs/css/dataTables.bootstrap.min.css";
+@import '~pretty-checkbox/dist/pretty-checkbox.min.css';
+.clickable{
+  cursor: pointer;
+}
+
+.has-error{
+  display: inline-block;
+  font-size: 20px;
+  color: red;
+}
